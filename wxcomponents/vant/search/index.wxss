@@ -8,7 +8,7 @@
 }
 
 .van-search__content {
-	background-color: var(--search-background-color, #f7f8fa);
+	background-color: var(--search-background-color, #ffff);
 	border-radius: 2px;
 	display: flex;
 	flex: 1;
@@ -45,7 +45,7 @@
 }
 
 .van-search__action--hover {
-	background-color: #f2f3f5
+	background-color: #fff
 }
 
 .van-search__action-button {

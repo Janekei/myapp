@@ -1,1 +1,77 @@
-/* pages/release/release.wxss */
+.contain{
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  overflow: auto;
+}
+
+.main{
+    /* display: flex;
+    justify-content: space-around;
+    align-items: center; */
+    height: 50px;
+    width: 100%;
+    /* box-sizing:none; */
+    font-size: 16px;
+    line-height: 50px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.main .left{
+    /* display:inline-block; */
+    /* flex: 20%; */
+    position: absolute;
+    left: 16px;
+    top:0;
+    width: 20%;
+    text-align: left;
+}
+.main .right{
+    /* flex: 80%; */
+    position: absolute;
+    right: 10px;
+    top: 0;
+    display: inline-block;
+    height: 50px;
+    width: 70%;
+    font-size: 14px;
+    padding-left: 10px;
+    outline: none;
+}
+.right .textColor{
+    color: #cfcfcf;
+}
+.main .dropmenu{
+    background: #8f2b2b;
+    width: 74%;
+}
+.main .adress{
+    width: 100%;
+    background-color: aqua;
+}
+.desc{
+  width:90vw;
+  height: 60px;
+  padding:16px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+}
+
+.desc .notice{
+    color: #cbc9c9;
+}
+.desc textarea{
+  height: 100%;
+  width: 100%;
+}
+.imgBox{
+  padding: 5px;
+}
+
+.submitBtn{
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+}

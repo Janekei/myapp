@@ -7,7 +7,7 @@
         wx:if="{{ thumb }}"
         src="{{ thumb }}"
         mode="{{ thumbMode }}"
-        lazy-load="{{ lazyLoad }}"
+        lazy-load="{{ lazyLoad }}" 
         class="van-card__img thumb-class"
       />
       <slot wx:else name="thumb" />
@@ -43,7 +43,7 @@
         <slot wx:else name="price" />
         <view wx:if="{{ originPrice || originPrice === 0 }}" class="van-card__origin-price origin-price-class">{{ currency }} {{ originPrice }}</view>
         <slot wx:else name="origin-price" />
-        <view wx:if="{{ num }}" class="van-card__num num-class">x {{ num }}</view>
+        <view wx:if="{{ num }}" class="van-card__num num-class">地址： {{ num }}</view>
         <slot wx:else  name="num" />
         <slot name="bottom" />
       </view>

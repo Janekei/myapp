@@ -1,2 +1,79 @@
-<!--pages/release/release.wxml-->
-<text>pages/release/release.wxml</text>
+<view class="contain">
+  <van-tabs swipeable animated>
+    <!-- 出售商品 -->
+    <van-tab title="{{title.sell_title}}" >
+      <view>
+        <view class="main">
+          <view class="left">
+            <view class="iconfont icon-biaoti" style="display:inline;"></view>
+            标题
+          </view>
+          <!-- 表单数据双向绑定 value:输入框的初始内容 bindinput:键盘输入时触发，event.detail = {value, cursor, keyCode}，keyCode 为键值-->
+          <input type="text" placeholder="请输入商品标题" value="{{formData.goods_name}}" bindinput="getInput" data-params="goods_name" placeholder-class="textColor" class="right"/>
+        </view>
+        <view class="main">
+          <view class="left">
+            <view class="iconfont icon-fenlei" style="display:inline;"></view>
+            分类
+          </view>
+          <view class="dropmenu">
+            <van-dropdown-menu>
+              <van-dropdown-item value="{{ default }}" options="{{ category }}" bindchange="getCategoryItem" data-params="goods_category" />
+            </van-dropdown-menu>
+          </view>
+        </view>
+        <view class="main">
+          <view class="left">
+            <view class="iconfont icon-jiage" style="display:inline;"></view>
+            价格
+          </view>
+          <input type="text" placeholder="请输入商品价格" placeholder-class="textColor" value="{{formData.goods_price}}" bindinput="getInput"  data-params="goods_price" class="right"  />
+        </view>
+        <view class="main">
+          <view class="left">
+            <view class="iconfont icon-tongxin-" style="display:inline;"></view>
+            微信
+          </view>
+          <input type="text" placeholder="请输入您的微信" placeholder-class="textColor" value="{{formData.goods_wxchat}}" bindinput="getInput"   data-params="goods_wxchat" class="right"/>
+        </view>
+        <view class="main">
+          <view class="left">
+            <view class="iconfont icon-shumashouji" style="display:inline;"></view>
+            手机
+          </view>
+          <input type="text" placeholder="请输入手机号码" placeholder-class="textColor" value="{{formData.goods_tele}}" bindinput="getInput"  data-params="goods_tele" class="right" />
+        </view>
+        <view class="main">
+          <view class="adress">
+            <van-field value="{{ fieldValue }}" is-link readonly label="地址" placeholder="请选择所在公寓" bind:tap="onClick" />
+          </view>
+          <van-popup show="{{ show }}" round position="bottom">
+            <van-cascader wx:if="{{ show }}" value="{{ cascaderValue }}" title="请选择所在公寓" options="{{ address }}" bind:close="onClose" bind:finish="onFinish"/>
+          </van-popup>
+        </view>
+        <view class="main">
+          <view class="left">
+            <van-icon name="more-o" />
+            分类
+          </view>
+          <view class="dropmenu">
+            <van-dropdown-menu>
+              <van-dropdown-item value="{{ default }}" options="{{ msg_type }}" bindchange="getGoodsType" data-params="msg_type" />
+            </van-dropdown-menu>
+          </view>
+        </view>
+        <view class="desc">
+          <textarea name="" id="" cols="30" rows="10" placeholder="请输入商品描述......" value="{{formData.goods_desc}}" bindinput="getInput"  data-params="goods_desc"  placeholder-class="textarea-placeholder" required="required" style="color: #333" selectable="true"></textarea>
+        </view>
+        <view class="imgBox" >
+          <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" sizeType="['original']" deletable="true" bind:delete="deleteImg"/>
+        </view>
+      </view>
+      <!-- 提交按钮 -->
+      <view class="submitBtn">
+        <van-button type="info" size="large" round block color="#ffc76b" bind:click="sellReleaseBtn">发布</van-button>
+      </view>
+    </van-tab>
+  </van-tabs>
+  <van-toast id="van-toast" />
+</view>

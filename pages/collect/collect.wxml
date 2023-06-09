@@ -1,2 +1,14 @@
-<!--pages/collect/collect.wxml-->
-<text>pages/collect/collect.wxml</text>
+<!-- pages/collect/collect.wxml -->
+<view wx:if="{{isLogin}}">
+    <van-notice-bar scrollable left-icon="volume-o" text="若要查看商品详情，请点击商品卡片；若要取消收藏，请左滑删除。" />
+    <van-swipe-cell right-width="{{ 65 }}" wx:for="{{collects}}" wx:for-item="item" wx:key="index" async-close bind:close="onClose" data-id="{{item.id}}">
+        <van-card num="{{item.address}}" price="{{item.price}}" desc="{{item.desc}}" title="{{item.name}}" thumb="{{item.img}}"></van-card>
+        <view slot="right" class="deletebtn">删除</view>
+    </van-swipe-cell>
+</view>
+<view wx:else>
+    请登录系统
+</view>
+  
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

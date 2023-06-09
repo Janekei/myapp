@@ -1,2 +1,29 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<!-- pages/my/my.wxml -->
+<view class="main">
+    <view class="top">
+        <view wx:if="{{isLogin}}">
+            <view class="img_head"  bind:tap="loginOut" >
+                <van-image round width="80px" height="80px" src="{{userInfo.avatarUrl}}" />
+            </view>
+            <view class="msg_right">
+                <view class="name_user">名字：{{userInfo.nickName}}</view>
+                <view class="id_user">性别：
+                    <van-image width="20" height="20" src="/static/icon-man.png" wx:if="{{userInfo.gender}}" />
+                    <van-image width="20" height="20" src="/static/icon-woman.png" wx:else />
+                </view>
+            </view>
+            <view class="go_my" bind:tap="gotoPerson">
+                <van-icon name="arrow" size="26px" />
+            </view>
+        </view>
+        <view wx:else class="loginbtn" bindtap="getUser" open-type="getUserProfile">
+            <van-button plain hairline type="warning" size="large" round>请点击登录</van-button>
+        </view>
+    </view>
+    <view class="main_content">
+        <van-cell title="我的主页" bind:tap="gotoPerson" is-link icon="clock-o" />
+        <van-cell title="客服中心" is-link icon="service-o" />
+        <van-cell title="平台公告" is-link icon="setting-o" />
+    </view>
+</view>
+<van-dialog id="van-dialog" />

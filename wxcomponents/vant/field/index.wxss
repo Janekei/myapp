@@ -2,8 +2,6 @@
 
 .van-field {
 	--cell-icon-size: var(--field-icon-size, 16px);
-	height: 50px;
-	border-bottom: 1px solid #eee;
 }
 
 .van-field__label {

@@ -1,4 +1,14 @@
 /* pages/home/home.wxss */
+/* .home{
+  height: 100vh;
+  overflow: auto; 
+} */
+::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+	color: transparent;
+	display: none;
+}
 .swiperbox {
   width: 90%;
   margin: 0 auto;
@@ -34,4 +44,8 @@
 .contain text {
   color: #3d3d3d;
   font-size: 14px;
+}
+ .watch{
+  color: #5e5e5e;
+  margin-left: 5px;
 }

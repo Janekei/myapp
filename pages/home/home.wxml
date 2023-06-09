@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <!--pages/home.wxml-->
 <view class="home">
-		<van-search placeholder="请输入搜索关键词" background="#ffc76b" shape="round" />
+      <van-search bind:change="onChange" bind:search="onSearch"  placeholder="请输入搜索关键词" background="#ffc76b" shape="round" />
 		<view class="swiperbox">
 			<swiper indicator-dots="true" autoplay="true" indicator-active-color="#fff" interval="3000" duration="1000" circular="true" class="swiper">
         <swiper-item wx:for="{{swiperImg}}"  wx:for-item="item" wx:key="id">
@@ -10,40 +10,52 @@
       </swiper>
 		</view>
     <view class="contain">
-			<view>
+			<view bind:tap="gotoDaily" data-id='1'>
 				<image src="../../static/shenghuo.png"></image>
 				<text>生活用品</text>
 			</view>
-			<view>
+			<view bind:tap="gotoDaily" data-id='2'>
 				<image src="../../static/shuben.png"></image>
 				<text>书本</text>
 			</view>
-			<view>
+			<view bind:tap="gotoDaily" data-id='3'>
 				<image src="../../static/shouji.png"></image>
 				<text>电子产品</text>
 			</view>
-			<view>
+			<view bind:tap="gotoDaily" data-id='4'>
 				<image src="../../static/fendi.png"></image>
 				<text>化妆品</text>
 			</view>
-			<view>
+			<view bind:tap="gotoDaily" data-id='5'>
 				<image src="../../static/yifu.png"></image>
 				<text>服装</text>
 			</view>
-			<view>
+			<view bind:tap="gotoaAllGoods">
 				<image src="../../static/quanbu.png"></image>
 				<text>全部分类</text>
 			</view>
 		</view>
     <view>
-      <van-tabs>
-        <van-tab title="闲置推荐">
-					<van-card num="2" price="2.00" desc="描述信息" title="商品标题" wx:for="{{swiperImg}}" wx:for-item="item"  wx:key="id"
-						thumb="{{item}}" />
-				</van-tab>
-				<van-tab title="收购推荐">
-				</van-tab>
+      <van-tabs sticky bind:click="showContent">
+        <van-tab title="{{title.sell}}">
+			<van-card num="{{item.address}}" price="{{item.price}}" desc="{{item.desc}}" title="{{item.title}}"
+			 wx:for="{{productInfo}}" wx:for-item="item"  wx:key="index" thumb="{{item.image}}" bind:tap="chooseGoods"  data-id="{{item.id}}">
+			 <view slot="price-top">
+				<view style="display:inline-block"><van-icon name="eye-o"/></view>
+				<text class="watch">{{item.watch}}</text>
+			 </view>
+			</van-card>
+		</van-tab>
+		<van-tab title="{{title.buy}}">
+			<van-card num="{{item.address}}" price="{{item.price}}" desc="{{item.desc}}" title="{{item.title}}"
+			 wx:for="{{productInfo}}" wx:for-item="item"  wx:key="buy" thumb="{{item.image}}" bind:tap="chooseGoods" data-id="{{item.id}}">
+			 <view slot="price-top">
+				<view style="display:inline-block"><van-icon name="eye-o"/></view>
+				<text class="watch">{{item.watch}}</text>
+			 </view>
+			</van-card>
+		</van-tab>
       </van-tabs>
     </view>
-	</view>
+</view>
 

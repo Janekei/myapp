@@ -1,19 +1,53 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
+// 封装request方法
+const request = async (params)=>{
+  let url = params.url
+  let data = params.data
+  let method = params.method
+  let header = {
+    "Content-Type":"application/json"
+  }
+  // 返回一个promise对象
+  return new Promise((resolve,reject)=>{
+    wx.request({
+      url, 
+      data,
+      method,
+      header,
+      success:res=>{
+        // console.log('util-------',res)
+        if(res.statusCode === 200){
+          resolve(res)
+        }else{
+          reject('网络连接异常！')
+        }
+      },
+      error:e =>{
+        reject(e)
+      }
+    })
+  })
 }
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : `0${n}`
+const uploadFile = async (params)=>{
+  let {url,filePath,name,formData} = params
+  return new Promise((resolve,reject)=>{
+    wx.uploadFile({
+      url, 
+      filePath,
+      name,
+      formData,
+      success:res=>{
+        resolve(res)
+      },
+      error:e =>{
+        reject(e)
+      }
+    })
+  })
 }
 
 module.exports = {
-  formatTime
+  request,
+  uploadFile
 }
+
